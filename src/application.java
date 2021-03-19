@@ -5,11 +5,15 @@ import java.awt.event.KeyEvent;
 import java.util.HashMap;
 
 public class application {
-    private JButton wButton;
-    private JButton sButton;
-    private JButton eButton;
-    private JButton dButton;
     private JPanel mainPanel;
+    private JButton qButton;
+    private JButton aButton;
+    private JButton wButton;
+    private JButton eButton;
+    private JButton rButton;
+    private JButton sButton;
+    private JButton dButton;
+    private JButton fButton;
 
     public static void main(String[] args) {
         JFrame application = new JFrame();
@@ -22,10 +26,13 @@ public class application {
         application.addKeyListener(anyKeyListener);
         application.setFocusable(true);
         application.requestFocus();
-        int size = application.getContentPane().getComponentCount();
-        for(int i = 0; i < size; i++) {
-            application.getContentPane().getComponent(i).setFocusable(false);
-            application.getContentPane().getComponent(i).setEnabled(false);
+        Component[] componentArr = application.getContentPane().getComponents();
+        for(Component component : componentArr) {
+            if(component instanceof JButton) {
+                component.setFocusable(false);
+                component.setEnabled(false);
+                component.setBackground(Color.WHITE);
+            }
         }
     }
 }
